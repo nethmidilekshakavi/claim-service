@@ -1,8 +1,9 @@
 package com.spms.claim_service.service.impl;
 
 import com.spms.claim_service.dto.ClaimDto;
-import com.spms.claim_service.entity.Claim;
-import com.spms.claim_service.repository.ClaimRepo;
+
+import com.spms.claim_service.module.Claim;
+import com.spms.claim_service.repo.ClaimRepo;
 import com.spms.claim_service.service.ClaimService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

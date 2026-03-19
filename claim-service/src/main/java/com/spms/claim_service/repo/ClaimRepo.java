@@ -1,6 +1,6 @@
 package com.spms.claim_service.repo;
 
-import com.spms.claim_service.entity.Claim;
+import com.spms.claim_service.module.Claim;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
