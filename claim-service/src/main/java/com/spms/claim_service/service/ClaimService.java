@@ -6,20 +6,9 @@ import com.spms.claim_service.module.Claim;
 import java.util.List;
 
 public interface ClaimService {
-
     Claim createClaim(ClaimDto dto);
-
     List<Claim> getAllClaims();
-
     Claim getClaimById(Long id);
-
-    List<Claim> getClaimsByItem(String itemId);
-
-    List<Claim> getClaimsByUser(Long userId);
-
-    List<Claim> getClaimsByStatus(String status);
-
     Claim updateClaimStatus(Long id, String status);
-
     void deleteClaim(Long id);
 }
