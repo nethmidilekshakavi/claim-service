@@ -3,7 +3,6 @@ package com.spms.claim_service.controller;
 import com.spms.claim_service.dto.ClaimDto;
 import com.spms.claim_service.module.Claim;
 import com.spms.claim_service.service.ClaimService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,10 +11,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/claims")
-@RequiredArgsConstructor
 public class ClaimController {
 
     private final ClaimService claimService;
+
+    public ClaimController(ClaimService claimService) {
+        this.claimService = claimService;
+    }
 
     @PostMapping
     public ResponseEntity<?> createClaim(@RequestBody ClaimDto dto) {
@@ -47,12 +49,10 @@ public class ClaimController {
             @RequestParam String status,
             @RequestParam String requestedByRole
     ) {
-        // Admin check
         if (!"admin".equalsIgnoreCase(requestedByRole)) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN)
                     .body("Access denied. Only admins can update claim status.");
         }
-
         try {
             return ResponseEntity.ok(claimService.updateClaimStatus(id, status));
         } catch (RuntimeException e) {
@@ -72,6 +72,6 @@ public class ClaimController {
 
     @GetMapping("/health")
     public ResponseEntity<String> health() {
-        return ResponseEntity.ok("claim-service is running ✓");
+        return ResponseEntity.ok("claim-service is running");
     }
 }
